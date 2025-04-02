@@ -2,6 +2,4 @@
 // between the system components
 
 pub mod cpu;
-pub mod input;
 pub mod memory;
-pub mod ppu;
