@@ -26,7 +26,7 @@ macro_rules! get_set_pair {
 
 pub struct Registers {
     a: u8,
-    f: u8, // accumulator and flags registers
+    f: u8, // Z: zero, N: subtract, H: half-carry, C: carry
     b: u8,
     c: u8, // b: hi, c: lo
     d: u8,
@@ -74,4 +74,14 @@ impl Registers {
     pub fn set_f(&mut self, value: u8) {
         self.f = value & 0xF0; // only the highest 4 bits are used for flags
     }
+
+    pub fn get_af(&self) -> u16 {
+        ((self.a as u16) << 8) | (self.f as u16)
+    }
+
+    pub fn set_af(&mut self, value: u16) {
+        self.a = (value >> 8) as u8;
+        self.f = (value & 0x00F0) as u8; 
+    }
+    
 }
