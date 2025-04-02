@@ -7,16 +7,30 @@ use opcodes::Opcodes;
 
 pub struct CPU {
     pub registers: Registers,
+    pub ime: bool,
+    pub cycles: u64,
 }
 
 impl CPU {
     pub fn new() -> Self {
         Self {
             registers: Registers::new(),
+            ime: false,
+            cycles: 0x0,
         } 
     }
     
-    pub fn execute(&mut self, opcode: u8) {
-       instructions::execute(self, opcode);
+    // fetch-decode-execute cycle
+    pub fn fetch(&mut self) -> u8 {
+        todo!()
     }
+    
+    pub fn decode(&mut self, opcode: u8) -> u8 {
+        todo!()
+    }
+    
+    pub fn execute(&mut self) -> u64 {
+        todo!()
+    }
+    
 }
